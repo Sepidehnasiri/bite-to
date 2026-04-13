@@ -1,0 +1,18 @@
+BiteTo is a three-view food discovery web application.
+
+View 1: Home
+- Hero section
+- Weather widget
+- Featured spot
+- Trending spots
+
+View 2: Explore
+- Search bar
+- Category filters
+- Dynamic gallery of food spots
+- Rating interaction buttons
+
+View 3: Add a Spot
+- Food recommendation form
+- Client-side validation
+- Success and error messages
