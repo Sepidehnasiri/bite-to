@@ -1,3 +1,5 @@
+let foodSpots = [];
+
 document.addEventListener("DOMContentLoaded", () => {
     getWeather();
     loadSpots();
@@ -36,25 +38,52 @@ function getWeather() {
 
 async function loadSpots() {
     try {
-        let data = JSON.parse(localStorage.getItem('spotsData')) || null;
-
-        if (!data) {
-            const response = await fetch("spots.json");
-            if (!response.ok) {
-                throw new Error("Failed to load spots data");
-            }
-            data = await response.json();
-            localStorage.setItem('spotsData', JSON.stringify(data)); // Save initial data
+        const response = await fetch("spots.json");
+        if (!response.ok) {
+            throw new Error("Failed to load spots data");
         }
 
+        let data = await response.json();
+        data.spots = data.spots.map(spot => ({
+            ...spot,
+            image: normalizeImagePath(spot.image),
+            imageFull: normalizeImagePath(spot.imageFull || spot.image)
+        }));
+
+        const cachedData = JSON.parse(localStorage.getItem('spotsData')) || null;
+        if (cachedData && Array.isArray(cachedData.spots)) {
+            const additionalSpots = cachedData.spots.filter(cachedSpot =>
+                !data.spots.some(spot => spot.id === cachedSpot.id)
+            );
+            if (additionalSpots.length) {
+                data.spots = [...data.spots, ...additionalSpots];
+            }
+        }
+
+        localStorage.setItem('spotsData', JSON.stringify(data));
+
+        foodSpots = data.spots;
+
         const spots = data.spots;
-        renderFeaturedSpot(spots);
-        renderTrendingSpots(spots);
+        if (document.getElementById("featured-spot")) {
+            renderFeaturedSpot(spots);
+        }
+        if (document.getElementById("trending-spots")) {
+            renderTrendingSpots(spots);
+        }
+        if (document.getElementById("gallery-grid")) {
+            renderGallery();
+        }
     } catch (error) {
         console.error("Spots Error:", error);
         document.getElementById("featured-spot").textContent = "Unable to load spot data.";
         document.getElementById("trending-spots").textContent = "Unable to load trending spots.";
     }
+}
+
+function normalizeImagePath(path) {
+    if (!path) return path;
+    return path.trim();
 }
 
 function renderFeaturedSpot(spots) {

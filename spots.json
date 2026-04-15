@@ -98,8 +98,8 @@
         "saturday":  "11:30 AM – 11:00 PM",
         "sunday":    "11:30 AM – 10:00 PM"
       },
-      "image":     "https://source.unsplash.com/600x400/?thai-food,noodles,asian",
-      "imageFull": "https://source.unsplash.com/1200x800/?thai-food,curry,southeast-asian",
+      "image": "images/pai-thai.jpg",
+      "imageFull": "images/pai-thai.jpg",
       "imageAlt":  "Steaming bowl of khao soi northern Thai noodles",
       "tags": ["thai", "spicy", "noodles", "gluten-free-options", "vegan-options"]
     },
@@ -127,8 +127,8 @@
         "saturday":  "9:00 AM – 8:00 PM",
         "sunday":    "10:00 AM – 6:00 PM"
       },
-      "image":     "https://source.unsplash.com/600x400/?patisserie,macarons,pastry",
-      "imageFull": "https://source.unsplash.com/1200x800/?french-pastry,dessert,bakery",
+      "image":     "images/patisserie.jpg",
+      "imageFull": "images/patisserie.jpg",
       "imageAlt":  "Colourful French macarons and pastries on a patisserie counter",
       "tags": ["dessert", "french", "pastry", "gluten-free-options", "gift-worthy"]
     },
@@ -156,8 +156,8 @@
         "saturday":  "5:00 PM – 11:00 PM",
         "sunday":    "Closed"
       },
-      "image":     "https://source.unsplash.com/600x400/?canadian-food,lobster,fine-dining",
-      "imageFull": "https://source.unsplash.com/1200x800/?skyline-restaurant,city-view,rooftop-dining",
+      "image":     "images/canoe.jpg ",
+      "imageFull": "images/canoe.jpg ",
       "imageAlt":  "Fine dining plate with Toronto skyline in the background",
       "tags": ["canadian", "fine-dining", "views", "business-lunch", "rooftop", "romantic"]
     },
@@ -185,8 +185,8 @@
         "saturday":  "8:00 AM – 5:00 PM",
         "sunday":    "8:00 AM – 4:00 PM"
       },
-      "image":     "https://source.unsplash.com/600x400/?coffee-shop,pour-over,specialty-coffee",
-      "imageFull": "https://source.unsplash.com/1200x800/?coffee,cafe-interior,neighbourhood",
+      "image":     "images/early-bird.jpg",
+      "imageFull": "images/early-bird.jpg",
       "imageAlt":  "Warm neighbourhood coffee shop with specialty pour-over coffee",
       "tags": ["coffee", "neighbourhood", "work-friendly", "quiet", "pastries"]
     },
@@ -214,8 +214,8 @@
         "saturday":  "11:00 AM – 12:00 AM",
         "sunday":    "11:00 AM – 11:00 PM"
       },
-      "image":     "https://source.unsplash.com/600x400/?burger,smashburger,fast-food",
-      "imageFull": "https://source.unsplash.com/1200x800/?burger,beef,cheese-burger",
+      "image":     "images/burgerspriest.jpg",
+      "imageFull": "images/burgerspriest.jpg",
       "imageAlt":  "Juicy smash burger with melted cheese and brioche bun",
       "tags": ["burgers", "fast-food", "casual", "secret-menu", "late-night"]
     },
@@ -243,8 +243,8 @@
         "saturday":  "6:00 PM – 10:30 PM",
         "sunday":    "Closed"
       },
-      "image":     "https://source.unsplash.com/600x400/?sushi,omakase,japanese",
-      "imageFull": "https://source.unsplash.com/1200x800/?sushi,nigiri,japanese-cuisine",
+      "image":     "images/sushi.jpg",
+      "imageFull": "images/sushi.jpg",
       "imageAlt":  "Pristine nigiri sushi pieces on a wooden serving board",
       "tags": ["sushi", "omakase", "japanese", "premium", "reservation-required", "special-occasion"]
     },
@@ -272,8 +272,8 @@
         "saturday":  "12:00 PM – 2:00 AM",
         "sunday":    "12:00 PM – 12:00 AM"
       },
-      "image":     "https://source.unsplash.com/600x400/?wine-bar,tapas,charcuterie",
-      "imageFull": "https://source.unsplash.com/1200x800/?bar-interior,wine,art-nouveau",
+      "image":     "images/bar-raval.jpg",
+      "imageFull": "images/bar-raval.jpg",
       "imageAlt":  "Intimate wine bar with charcuterie and natural wine",
       "tags": ["bar", "wine", "tapas", "date-night", "late-night", "spanish-inspired"]
     },
@@ -301,8 +301,8 @@
         "saturday":  "12:00 PM – 11:00 PM",
         "sunday":    "12:00 PM – 9:00 PM"
       },
-      "image":     "https://source.unsplash.com/600x400/?japanese-food,izakaya,karaage",
-      "imageFull": "https://source.unsplash.com/1200x800/?japanese-food,bento,comfort-food",
+      "image":     "images/imanishi.jpg",
+      "imageFull": "images/imanishi.jpg",
       "imageAlt":  "Japanese comfort food with crispy karaage and rice",
       "tags": ["japanese", "izakaya", "comfort-food", "casual", "beer", "hidden-gem"]
     },
@@ -330,8 +330,8 @@
         "saturday":  "11:00 AM – 11:00 PM",
         "sunday":    "11:00 AM – 10:00 PM"
       },
-      "image":     "https://source.unsplash.com/600x400/?ice-cream,soft-serve,dessert",
-      "imageFull": "https://source.unsplash.com/1200x800/?ice-cream,gelato,artisan",
+      "image":     "images/bang-bang.jpg",
+      "imageFull": "images/bang-bang.jpg",
       "imageAlt":  "Artisan soft-serve ice cream cone with creative toppings",
       "tags": ["ice-cream", "dessert", "vegan-options", "instagram-worthy", "summer"]
     },
@@ -359,8 +359,8 @@
         "saturday":  "12:00 PM – 7:00 PM",
         "sunday":    "12:00 PM – 6:00 PM"
       },
-      "image":     "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=800&q=80",
-      "imageFull": "https://source.unsplash.com/1200x800/?tacos,street-food,mexican",
+      "image":     "images/seven-tacos.jpg",
+      "imageFull": "images/seven-tacos.jpg",
       "imageAlt":  "Fresh fish tacos with cilantro, salsa, and lime",
       "tags": ["tacos", "mexican", "seafood", "cash-only", "street-food", "kensington"]
     }
