@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BiteTo - Explore</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="logo">Bite<span>To</span></div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="explore.html" class="active">Explore</a></li>
+      <li><a href="add.html">Add a Spot</a></li>
+    </ul>
+
+    <a href="add.html" class="btn-primary">+ Add a Spot</a>
+  </nav>
+
+  <!-- EXPLORE HERO -->
+  <section class="explore-hero">
+    <h1>Explore <em>Toronto's</em> best eats</h1>
+    <p>Search, filter, and discover your next favourite spot.</p>
+
+    <div class="search-bar">
+      <input
+        type="text"
+        id="search-input"
+        placeholder="Search by name, cuisine, or neighbourhood…"
+        oninput="renderGallery()"
+      />
+      <button type="button">Search</button>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="container">
+    <!-- FILTERS -->
+    <div class="filter-row" id="filter-row">
+      <button class="pill active" onclick="setFilter('All', this)">All</button>
+      <button class="pill" onclick="setFilter('Café', this)">Café</button>
+      <button class="pill" onclick="setFilter('Restaurant', this)">Restaurant</button>
+      <button class="pill" onclick="setFilter('Dessert', this)">Dessert</button>
+      <button class="pill" onclick="setFilter('Fast Food', this)">Fast Food</button>
+      <button class="pill" onclick="setFilter('Bar', this)">Bar</button>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="gallery-grid" id="gallery-grid">
+      <!-- Cards rendered by JavaScript -->
+    </div>
+  </main>
+
+  <!-- CTA SECTION -->
+  <section class="cta-section">
+    <h2>Know a Great Spot?</h2>
+    <p>
+      Help the community discover new favorites by adding your recommendations.
+    </p>
+    <a href="add.html" class="btn-primary">Add a Spot</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 <strong>BiteTo</strong> — Toronto's Food Discovery App</p>
+  </footer>
+
+  <script src="js/scripts.js"></script>
+</body>
+</html>

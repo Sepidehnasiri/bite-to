@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiteTo — Toronto's Food Discovery App</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">Bite<span>To</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="explore.html">Explore</a></li>
+                <li><a href="add.html">Add a Spot</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Find your next favourite <em>bite</em> in the city</h1>
+            <p>
+                Curated restaurants, live weather updates, and real community
+                ratings — all in one place.
+            </p>
+            <div class="hero-buttons">
+                <a href="explore.html" class="btn-primary">Explore Spots</a>
+                <a href="add.html" class="btn-secondary">Recommend a Place</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main>
+
+        <!-- Weather Widget -->
+        <section class="container">
+            <h2>Live Weather in Toronto</h2>
+            <div class="weather-card">
+                <div class="weather-info">
+                    <h3 id="temperature">--°C</h3>
+                    <p id="weather-description">Loading weather...</p>
+                    <p>Toronto, ON</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Spot -->
+        <section class="container">
+            <div class="section-header">
+                <h2>Featured Spot</h2>
+                <a href="explore.html">See All</a>
+            </div>
+            <div id="featured-spot" class="featured-card">
+                <!-- Rendered by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Trending Spots -->
+        <section class="container">
+            <div class="section-header">
+                <h2>Trending This Week</h2>
+                <a href="explore.html">View All</a>
+            </div>
+            <div id="trending-spots" class="trending-grid">
+                <!-- Rendered by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="container cta-section">
+            <div class="cta-content">
+                <h2>Know a Great Spot?</h2>
+                <p>Help the community discover new favorites by adding your recommendations.</p>
+                <a href="add.html" class="btn-primary">Add a Spot</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= MODAL ================= -->
+    <div id="spot-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body">
+                <!-- Spot details will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <p>&copy; 2025 <strong>BiteTo</strong> — Toronto's Food Discovery App</p>
+    </footer>
+
+    <!-- Main JavaScript -->
+    <script src="js/scripts.js"></script>
+</body>
+</html>
