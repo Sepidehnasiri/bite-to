@@ -37,10 +37,24 @@ body {
 }
 
 .logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 24px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 36px;
     font-weight: bold;
     color: white;
+    position: relative;
+}
+
+.logo .faded {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    color: rgba(255, 255, 255, 0.1);
+    z-index: 0;
+}
+
+.logo span {
+    position: relative;
+    z-index: 1;
 }
 
 .logo span {
@@ -107,7 +121,7 @@ body {
 }
 
 .hero h1 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Outfit', sans-serif;
     font-size: 42px;
     margin-bottom: 15px;
 }
@@ -151,7 +165,7 @@ body {
 }
 
 .section-header h2 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Outfit', sans-serif;
     font-size: 26px;
 }
 
@@ -175,7 +189,7 @@ body {
 
 .weather-info h3 {
     font-size: 36px;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Outfit', sans-serif;
 }
 
 /* ===============================
@@ -448,7 +462,7 @@ footer {
 }
 
 #modal-body h2 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Outfit', sans-serif;
     margin-bottom: 10px;
 }
 
@@ -467,7 +481,7 @@ footer {
 }
 
 .explore-hero h1 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Outfit', sans-serif;
     font-size: 42px;
     margin-bottom: 12px;
 }
@@ -695,7 +709,7 @@ footer {
 }
 
 .cta-section h2 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Outfit', sans-serif;
     font-size: 44px;
     margin-bottom: 18px;
 }
@@ -762,7 +776,7 @@ footer {
   flex-shrink: 0;
 }
 .weather-temp {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Outfit', sans-serif;
   font-size:   46px;
   color:       #FAF7F2;
   line-height: 1;
