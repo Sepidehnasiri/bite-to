@@ -310,6 +310,9 @@ function renderGallery() {
 
     gallery.innerHTML = "";
 
+    // Add class for fewer cards to make them larger
+    gallery.classList.toggle('few-cards', filteredSpots.length < 3);
+
     if (filteredSpots.length === 0) {
         gallery.innerHTML = `
             <div class="no-results">
