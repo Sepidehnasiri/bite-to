@@ -172,7 +172,7 @@
       "priceRange": "$",
       "emoji": "🥐",
       "tag": "Local gem",
-      "featured": false,
+      "featured": true,
       "trending": false,
       "description": "A beloved neighbourhood coffee shop with single-origin pour-overs, warm pastries, and a community-first vibe. Tables fill fast on weekends.",
       "mustTry": ["Single-origin pour-over", "Almond croissant", "Granola bowl"],

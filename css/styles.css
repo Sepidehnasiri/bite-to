@@ -677,3 +677,95 @@ footer {
         font-size: 15px;
     }
 }
+/* ── Weather Card Container ─────────────────── */
+.weather-card {
+  background:       #1F3D3A;
+  border-radius:    14px;
+  padding:          1.75rem 2rem;
+  display:          grid;
+  grid-template-columns: 1fr auto;
+  gap:              2rem;
+  align-items:      center;
+  border:           1px solid rgba(168,187,163,.12);
+  margin-bottom:    2rem;
+}
+
+/* ── Left column ────────────────────────────── */
+.weather-main {
+  display:     flex;
+  align-items: center;
+  gap:         1.5rem;
+}
+.weather-icon {
+  font-size:   52px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.weather-temp {
+  font-family: 'Playfair Display', serif;
+  font-size:   46px;
+  color:       #FAF7F2;
+  line-height: 1;
+}
+.weather-city {
+  font-size:       12px;
+  color:           #C8A96A;
+  font-weight:     500;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  margin-top:     4px;
+}
+.weather-desc {
+  font-size:  13px;
+  color:      rgba(250,247,242,.4);
+  margin-top: 2px;
+}
+
+/* ── Dining tip bar ─────────────────────────── */
+.weather-tip {
+  margin-top:    1rem;
+  background:   rgba(200,169,106,.1);
+  border-left:  3px solid #C8A96A;
+  padding:      9px 14px;
+  border-radius: 0 8px 8px 0;
+  font-size:    12.5px;
+  color:        rgba(250,247,242,.65);
+  line-height:  1.55;
+  max-width:    420px;
+}
+
+/* ── Right column: stat boxes ───────────────── */
+.weather-stats {
+  display: flex;
+  gap:     12px;
+}
+.weather-stat {
+  text-align:    center;
+  background:   rgba(255,255,255,.05);
+  border:        1px solid rgba(168,187,163,.1);
+  border-radius: 10px;
+  padding:       14px 18px;
+  min-width:     82px;
+}
+.stat-value {
+  font-size:   18px;
+  font-weight: 500;
+  color:       #FAF7F2;
+}
+.stat-label {
+  font-size:       10px;
+  color:           rgba(250,247,242,.3);
+  margin-top:     4px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+
+/* ── Responsive ─────────────────────────────── */
+@media (max-width: 640px) {
+  .weather-card {
+    grid-template-columns: 1fr;
+  }
+  .weather-stats {
+    flex-wrap: wrap;
+  }
+}

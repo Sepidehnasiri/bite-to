@@ -1,40 +1,10 @@
 let foodSpots = [];
 
 document.addEventListener("DOMContentLoaded", () => {
-    getWeather();
+    fetchWeather();
     loadSpots();
     initAddSpotForm();
 });
-
-function getWeather() {
-    // مختصات تورنتو
-    const latitude = 43.65107;
-    const longitude = -79.347015;
-
-    // استفاده از Open-Meteo API (رایگان و بدون نیاز به کلید)
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`;
-
-    fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Failed to fetch weather data");
-            }
-            return response.json();
-        })
-        .then(data => {
-            const temperature = data.current_weather.temperature;
-            const weatherCode = data.current_weather.weathercode;
-
-            document.getElementById("temperature").textContent = `${temperature}°C`;
-            document.getElementById("weather-description").textContent =
-                getWeatherDescription(weatherCode);
-        })
-        .catch(error => {
-            console.error("Weather Error:", error);
-            document.getElementById("weather-description").textContent =
-                "Unable to load weather data.";
-        });
-}
 
 async function loadSpots() {
     try {
@@ -104,8 +74,6 @@ function renderFeaturedSpot(spots) {
         <p><strong>Price:</strong> ${featuredSpot.priceRange}</p>
         ${featuredSpot.tag ? `<p><em>${featuredSpot.tag}</em></p>` : ''}
     `;
-
-    // Add click listener
     document.querySelector("#featured-spot .spot-image").addEventListener("click", () => showSpotModal(featuredSpot));
 }
 
@@ -128,8 +96,6 @@ function renderTrendingSpots(spots) {
             </div>
         `)
         .join("");
-
-    // Add click listeners to all trending spot images
     document.querySelectorAll("#trending-spots .spot-image").forEach(img => {
         img.addEventListener("click", (e) => {
             const spotId = parseInt(e.target.dataset.spotId);
@@ -143,27 +109,35 @@ function initAddSpotForm() {
     const form = document.getElementById('add-spot-form');
     if (!form) return;
 
-    form.addEventListener('submit', function(e) {
+    form.addEventListener('submit', async function(e) {
         e.preventDefault();
 
         if (validateForm()) {
+            // Handle image file upload
+            let imageData = 'https://via.placeholder.com/400x300/FAF7F2/1F3D3A?text=New+Spot';
+            const imageFile = document.getElementById('image').files[0];
+            
+            if (imageFile) {
+                imageData = await fileToBase64(imageFile);
+            }
+
             const newSpot = {
                 id: Date.now(), // Simple unique ID
                 name: document.getElementById('name').value.trim(),
-                description: document.getElementById('description').value.trim(),
+                description: document.getElementById('description')?.value.trim() || '',
                 category: document.getElementById('category').value,
                 location: document.getElementById('location').value.trim(),
                 emoji: document.getElementById('emoji').value.trim(),
                 tag: document.getElementById('tag').value.trim(),
                 cuisine: document.getElementById('cuisine').value.trim(),
                 rating: parseFloat(document.getElementById('rating').value),
-                reviewCount: parseInt(document.getElementById('reviews').value),
+                reviewCount: 0, // Default to 0 since it's no longer user input
                 address: document.getElementById('address').value.trim(),
-                priceRange: document.getElementById('priceRange').value,
+                priceRange: document.getElementById('priceRange')?.value || '$',
                 featured: document.getElementById('featured').checked,
                 trending: document.getElementById('trending').checked,
-                image: document.getElementById('image').value.trim() || 'https://via.placeholder.com/400x300/FAF7F2/1F3D3A?text=New+Spot', // Default image
-                imageFull: document.getElementById('image').value.trim() || 'https://via.placeholder.com/1200x800/FAF7F2/1F3D3A?text=New+Spot', // Default full image
+                image: imageData,
+                imageFull: imageData,
                 imageAlt: `${document.getElementById('name').value.trim()} image`,
                 tags: [] // Can be added later
             };
@@ -175,80 +149,69 @@ function initAddSpotForm() {
     });
 }
 
+function fileToBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+        reader.readAsDataURL(file);
+    });
+}
+
 function validateForm() {
     let isValid = true;
-
-    // Clear previous errors
     document.querySelectorAll('.error').forEach(el => el.textContent = '');
 
-    // Name
     const name = document.getElementById('name').value.trim();
     if (!name) {
         document.getElementById('name-error').textContent = 'Spot name is required.';
         isValid = false;
+    } else if (name.length < 4) {
+        document.getElementById('name-error').textContent = 'Restaurant name must be at least 4 characters.';
+        isValid = false;
     }
 
-    // Description
     const description = document.getElementById('description').value.trim();
     if (!description) {
         document.getElementById('description-error').textContent = 'Description is required.';
         isValid = false;
     }
 
-    // Category
     const category = document.getElementById('category').value;
     if (!category) {
         document.getElementById('category-error').textContent = 'Please select a category.';
         isValid = false;
     }
 
-    // Location
     const location = document.getElementById('location').value.trim();
     if (!location) {
         document.getElementById('location-error').textContent = 'Location is required.';
         isValid = false;
     }
 
-    // Cuisine
-    const cuisine = document.getElementById('cuisine').value.trim();
+    const cuisine = document.getElementById('cuisine').value;
     if (!cuisine) {
-        document.getElementById('cuisine-error').textContent = 'Cuisine type is required.';
+        document.getElementById('cuisine-error').textContent = 'Please select a cuisine type.';
         isValid = false;
     }
-
-    // Rating
     const rating = parseFloat(document.getElementById('rating').value);
     if (isNaN(rating) || rating < 1 || rating > 5) {
         document.getElementById('rating-error').textContent = 'Rating must be between 1 and 5.';
         isValid = false;
     }
-
-    // Reviews
-    const reviews = parseInt(document.getElementById('reviews').value);
-    if (isNaN(reviews) || reviews < 0) {
-        document.getElementById('reviews-error').textContent = 'Number of reviews must be a positive number.';
-        isValid = false;
-    }
-
-    // Address
     const address = document.getElementById('address').value.trim();
     if (!address) {
         document.getElementById('address-error').textContent = 'Address is required.';
         isValid = false;
     }
-
-    // Price Range
-    const priceRange = document.getElementById('priceRange').value;
-    if (!priceRange) {
-        document.getElementById('priceRange-error').textContent = 'Please select a price range.';
-        isValid = false;
-    }
-
-    // Image URL (optional, but if provided, must be valid URL)
-    const image = document.getElementById('image').value.trim();
-    if (image && !isValidUrl(image)) {
-        document.getElementById('image-error').textContent = 'Please enter a valid image URL.';
-        isValid = false;
+    const imageFile = document.getElementById('image').files;
+    if (imageFile.length > 0) {
+        // Validate file type
+        const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+        if (!allowedTypes.includes(imageFile[0].type)) {
+            document.getElementById('image-error').textContent = 'Please upload a valid image file (JPEG, PNG, GIF, or WebP).';
+            isValid = false;
+        }
     }
 
     return isValid;
@@ -311,41 +274,9 @@ function showSpotModal(spot) {
     };
 }
 
-// تبدیل کد آب‌وهوا به توضیح متنی
-function getWeatherDescription(code) {
-    const weatherCodes = {
-        0: "Clear Sky ☀️",
-        1: "Mainly Clear 🌤️",
-        2: "Partly Cloudy ⛅",
-        3: "Cloudy ☁️",
-        45: "Foggy 🌫️",
-        48: "Rime Fog 🌫️",
-        51: "Light Drizzle 🌦️",
-        53: "Drizzle 🌦️",
-        55: "Heavy Drizzle 🌧️",
-        61: "Light Rain 🌦️",
-        63: "Rain 🌧️",
-        65: "Heavy Rain 🌧️",
-        71: "Light Snow 🌨️",
-        73: "Snow 🌨️",
-        75: "Heavy Snow ❄️",
-        80: "Rain Showers 🌦️",
-        81: "Rain Showers 🌧️",
-        82: "Heavy Showers ⛈️",
-        95: "Thunderstorm ⛈️"
-    };
-
-    return weatherCodes[code] || "Unknown Weather";
-}
-/* ===============================
-   STATE
-================================= */
 let activeFilter = "All";
 let votes = {};
 
-/* ===============================
-   FILTER
-================================= */
 function setFilter(category, button) {
     activeFilter = category;
 
@@ -356,10 +287,6 @@ function setFilter(category, button) {
     button.classList.add("active");
     renderGallery();
 }
-
-/* ===============================
-   RENDER GALLERY
-================================= */
 function renderGallery() {
     const gallery = document.getElementById("gallery-grid");
     const searchInput = document.getElementById("search-input");
@@ -431,9 +358,6 @@ function renderGallery() {
     });
 }
 
-/* ===============================
-   VOTE
-================================= */
 function vote(id, type) {
     if (votes[id] === type) {
         votes[id] = null;
@@ -443,10 +367,70 @@ function vote(id, type) {
 
     renderGallery();
 }
-
-/* ===============================
-   PAGE INIT
-================================= */
 document.addEventListener("DOMContentLoaded", () => {
     renderGallery();
 });
+async function fetchWeather() {
+
+  // Open-Meteo — free, no API key required
+  const API_URL = `https://api.open-meteo.com/v1/forecast?latitude=43.7&longitude=-79.42&current=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,weather_code&timezone=America/Toronto`;
+
+  const ICONS = {
+    0:'☀️', 1:'🌤', 2:'⛅', 3:'☁️',
+    45:'🌫', 48:'🌫',
+    51:'🌦', 53:'🌦', 55:'🌧',
+    61:'🌧', 63:'🌧', 65:'🌧',
+    71:'🌨', 73:'🌨', 75:'❄️',
+    80:'🌦', 81:'🌧',
+    95:'⛈',  99:'⛈'
+  };
+
+  const DESCRIPTIONS = {
+    0: 'Clear skies',    1: 'Mainly clear',
+    2: 'Partly cloudy', 3: 'Overcast',
+    45: 'Foggy',
+    51: 'Light drizzle', 61: 'Light rain',
+    63: 'Moderate rain', 65: 'Heavy rain',
+    71: 'Light snow',   75: 'Heavy snow',
+    80: 'Rain showers', 95: 'Thunderstorm'
+  };
+
+  try {
+    const res  = await fetch(API_URL);
+    const data = await res.json();
+    const c    = data.current;
+
+    const temp = Math.round(c.temperature_2m);
+    const code = c.weather_code;
+
+    // Update DOM elements
+    document.getElementById('weather-icon').textContent
+      = ICONS[code] || '🌡';
+    document.getElementById('weather-temp').textContent
+      = temp + '°C';
+    document.getElementById('weather-desc').textContent
+      = DESCRIPTIONS[code] || 'Current conditions';
+    document.getElementById('weather-feels').textContent
+      = Math.round(c.apparent_temperature) + '°C';
+    document.getElementById('weather-humid').textContent
+      = Math.round(c.relative_humidity_2m) + '%';
+    document.getElementById('weather-wind').textContent
+      = Math.round(c.wind_speed_10m) + ' km/h';
+
+    // Dynamic dining tip based on temperature
+    let tip;
+    if      (temp > 22) tip = 'Great patio weather — dine al fresco!';
+    else if (temp > 12) tip = 'Pleasant out. Perfect for a walk to dinner.';
+    else if (temp >  2) tip = 'Cool night — a warm bowl of ramen sounds perfect.';
+    else               tip = 'Bundle up! Cozy indoor dining is the move.';
+
+    document.getElementById('weather-tip').textContent
+      = '💡 Dining tip: ' + tip;
+
+  } catch (err) {
+    document.getElementById('weather-desc').textContent
+      = 'Weather unavailable';
+    document.getElementById('weather-tip').textContent
+      = 'Could not load forecast. Try again later.';
+  }
+}

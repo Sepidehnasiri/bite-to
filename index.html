@@ -41,23 +41,48 @@
         <!-- Weather Widget -->
         <section class="container">
             <h2>Live Weather in Toronto</h2>
-            <div class="weather-card">
-                <div class="weather-info">
-                    <h3 id="temperature">--°C</h3>
-                    <p id="weather-description">Loading weather...</p>
-                    <p>Toronto, ON</p>
-                </div>
-            </div>
-        </section>
+<!-- Weather Widget -->
+<div class="weather-card">
 
-        <!-- Featured Spot -->
+  <!-- Left: icon + temp + tip -->
+  <div class="weather-left">
+    <div class="weather-main">
+      <div class="weather-icon" id="weather-icon">⛅</div>
+      <div>
+        <div class="weather-temp" id="weather-temp">—°C</div>
+        <div class="weather-city">Toronto, Ontario</div>
+        <div class="weather-desc" id="weather-desc">Loading…</div>
+      </div>
+    </div>
+    <div class="weather-tip" id="weather-tip">
+      Checking forecast…
+    </div>
+  </div>
+
+  <!-- Right: stat boxes -->
+  <div class="weather-stats">
+    <div class="weather-stat">
+      <div class="stat-value" id="weather-feels">—</div>
+      <div class="stat-label">Feels like</div>
+    </div>
+    <div class="weather-stat">
+      <div class="stat-value" id="weather-humid">—</div>
+      <div class="stat-label">Humidity</div>
+    </div>
+    <div class="weather-stat">
+      <div class="stat-value" id="weather-wind">—</div>
+      <div class="stat-label">Wind</div>
+    </div>
+  </div>
+
+</div>
+        </section>
         <section class="container">
             <div class="section-header">
                 <h2>Featured Spot</h2>
                 <a href="explore.html">See All</a>
             </div>
             <div id="featured-spot" class="featured-card">
-                <!-- Rendered by JavaScript -->
             </div>
         </section>
 
@@ -83,7 +108,6 @@
 
     </main>
 
-    <!-- ================= MODAL ================= -->
     <div id="spot-modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
@@ -93,7 +117,9 @@
         </div>
     </div>
     <footer>
-        <p>&copy; 2025 <strong>BiteTo</strong> — Toronto's Food Discovery App</p>
+        <p>BiteTo helps you discover the best food spots in Toronto.</p>
+        <p>Contact us: <a href="mailto:hello@biteto.com">hello@biteto.com</a></p>
+        <p>&copy; 2025 <strong>BiteTo</strong></p>
     </footer>
 
     <!-- Main JavaScript -->
