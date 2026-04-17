@@ -34,17 +34,7 @@ BiteTo is designed to help residents and visitors discover top-rated food spots 
 - **Git & GitHub** – Version control and collaboration
 - **Vercel / Netlify / GitHub Pages** – Deployment
 
-## Data Structure
-```javascript
-const foodSpots = [
-  {
-    id: 1,
-    name: "Cafe Landwer",
-    category: "Cafe",
-    location: "Toronto",
-    rating: 4.5,
-    priceRange: "$$",
-    image: "images/cafe-landwer.jpg",
-    description: "A cozy café known for its delicious brunch."
-  }
-];
+## Live Demo
+The project is available online here:
+https://sepidehnasiri.github.io/bite-to/index.html
+https://bite-to.vercel.app/index.html
