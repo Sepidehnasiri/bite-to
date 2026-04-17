@@ -136,6 +136,7 @@ body {
     margin: 0 auto 25px;
     font-size: 16px;
     opacity: 0.9;
+    white-space: nowrap;
 }
 
 .hero-buttons {
